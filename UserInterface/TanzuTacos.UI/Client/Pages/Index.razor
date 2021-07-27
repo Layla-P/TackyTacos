@@ -1,0 +1,36 @@
+﻿@page "/"
+@using Models
+@using System.Net.Http
+@inject IHttpClientFactory HttpClientFactory
+
+@if (specials is null)
+{<p>loading....</p>}
+else
+{
+	<div class="main">
+		<ul class="card">
+
+			@foreach (var special in specials)
+			{
+				<li style="background-image: url('@special.ImageUrl')">
+					<div class="pizza-info">
+						<span class="title">@special.Name</span>
+						@special.Description
+						<span class="price">@special.GetFormattedBasePrice()</span>
+					</div>
+				</li>
+			}
+			
+		</ul>
+	</div>
+}
+
+@code {
+	List<TacoSpecial> specials;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var client = HttpClientFactory.CreateClient("WebApiProject");
+		specials = await client.GetFromJsonAsync<List<TacoSpecial>>("specials");
+	}
+}

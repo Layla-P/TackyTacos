@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.WebApp", "UserInterface\TanzuTacos.WebApp\TanzuTacos.WebApp.csproj", "{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.ShoppingBasketService", "Microservices\TanzuTacos.ShoppingBasketService\TanzuTacos.ShoppingBasketService.csproj", "{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.WebApi", "UserInterface\TanzuTacos.WebApi\TanzuTacos.WebApi.csproj", "{4E083C5B-79FE-4758-9210-9081EA7DC850}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanzuTacos.UI.Server", "UserInterface\TanzuTacos.UI\Server\TanzuTacos.UI.Server.csproj", "{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanzuTacos.UI.Client", "UserInterface\TanzuTacos.UI\Client\TanzuTacos.UI.Client.csproj", "{C866DF22-F15F-4E07-8580-6D2B70A71F2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E083C5B-79FE-4758-9210-9081EA7DC850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E083C5B-79FE-4758-9210-9081EA7DC850}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E083C5B-79FE-4758-9210-9081EA7DC850}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E083C5B-79FE-4758-9210-9081EA7DC850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C866DF22-F15F-4E07-8580-6D2B70A71F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C866DF22-F15F-4E07-8580-6D2B70A71F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C866DF22-F15F-4E07-8580-6D2B70A71F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C866DF22-F15F-4E07-8580-6D2B70A71F2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3F7EB4E4-4AAB-46FE-99CC-CCB28BCF334C} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
 		{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
-		{4E083C5B-79FE-4758-9210-9081EA7DC850} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+		{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+		{C866DF22-F15F-4E07-8580-6D2B70A71F2D} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}
