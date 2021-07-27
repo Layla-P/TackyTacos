@@ -1,7 +1,31 @@
 ﻿@page "/"
+@using Models
+@using System.Net.Http
+@inject IHttpClientFactory HttpClientFactory
 
-<h1>Hello, world!</h1>
+<div class="main">
+	<ul class="card">
+	
+			@foreach (var special in specials)
+			{
+				<li style="background-image: url('@special.ImageUrl')">
+					<div class="pizza-info">
+						<span class="title">@special.Name</span>
+						@special.Description
+						<span class="price">@special.GetFormattedBasePrice()</span>
+					</div>
+				</li>
+			}
+		}
+	</ul>
+</div>
 
-Welcome to your new app.
+@code {
+	List<TacoSpecial> specials;
 
-<SurveyPrompt Title="How is Blazor working for you?"/>
+	protected override async Task OnInitializedAsync()
+	{
+		var client = HttpClientFactory.CreateClient("WebApiProject");
+		specials = await client.GetFromJsonAsync<List<TacoSpecial>>("specials");
+	}
+}
