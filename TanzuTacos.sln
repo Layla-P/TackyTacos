@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.ShoppingBasketService", "Microservices\TanzuTacos.ShoppingBasketService\TanzuTacos.ShoppingBasketService.csproj", "{7E39084A-3A63-4AE0-9A3A-40DDDD1D4494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanzuTacos.UI.Server", "UserInterface\TanzuTacos.UI\Server\TanzuTacos.UI.Server.csproj", "{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.UI.Server", "UserInterface\TanzuTacos.UI\Server\TanzuTacos.UI.Server.csproj", "{9D9B0B6B-F7A9-41F2-B89B-A1B58E0BCD88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanzuTacos.UI.Client", "UserInterface\TanzuTacos.UI\Client\TanzuTacos.UI.Client.csproj", "{C866DF22-F15F-4E07-8580-6D2B70A71F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.UI.Client", "UserInterface\TanzuTacos.UI\Client\TanzuTacos.UI.Client.csproj", "{C866DF22-F15F-4E07-8580-6D2B70A71F2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

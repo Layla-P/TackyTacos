@@ -4,33 +4,77 @@
 @inject IHttpClientFactory HttpClientFactory
 
 @if (specials is null)
-{<p>loading....</p>}
+{
+	<p>loading....</p>
+}
 else
 {
 	<div class="main">
-		<ul class="card">
 
+	 <div class="card-deck card-deck-special">
 			@foreach (var special in specials)
 			{
-				<li style="background-image: url('@special.ImageUrl')">
-					<div class="pizza-info">
-						<span class="title">@special.Name</span>
-						@special.Description
-						<span class="price">@special.GetFormattedBasePrice()</span>
-					</div>
-				</li>
+		  <div class="card card-special" @onclick="@(() => ShowConfigureTacoDialog(special))">
+		   <img src="@special.ImageUrl" class="card-img-top special-image" alt="...">
+		   <div class="card-body">
+			<h5 class="card-title">@special.Name</h5>
+			<p class="card-text">@special.Description</p>
+			<span class="price">£@special.GetFormattedBasePrice()</span>
+						@*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+		   </div>
+		  </div>
+
 			}
-			
-		</ul>
+	 </div>
 	</div>
+
+	<ShoppingBasket Order="order"/>
+}
+
+@if (showingConfigureDialog)
+{
+	<ConfigureTacoDialog Taco="configuringTaco"
+					 OnCancel="CancelConfigureTacoDialog"
+					 OnConfirm="ConfirmConfigureTacoDialog" />
 }
 
 @code {
 	List<TacoSpecial> specials;
+	Taco configuringTaco;
+	bool showingConfigureDialog;
+	Order order = new();
 
 	protected override async Task OnInitializedAsync()
 	{
 		var client = HttpClientFactory.CreateClient("WebApiProject");
 		specials = await client.GetFromJsonAsync<List<TacoSpecial>>("specials");
 	}
+
+	void ShowConfigureTacoDialog(TacoSpecial special)
+	{
+		configuringTaco = new Taco()
+		{
+			Special = special,
+			SpecialId = special.Id,
+			Extras = new List<TacoExtra>(),
+		};
+
+		showingConfigureDialog = true;
+	}
+
+	void CancelConfigureTacoDialog()
+	{
+		configuringTaco = null;
+		showingConfigureDialog = false;
+	}
+
+	void ConfirmConfigureTacoDialog()
+	{
+		order.Tacos.Add(configuringTaco);
+		configuringTaco = null;
+
+		showingConfigureDialog = false;
+	}
+
+	
 }

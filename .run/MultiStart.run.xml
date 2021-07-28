@@ -1,0 +1,7 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MultiStart" type="CompoundRunConfigurationType">
+    <toRun name="TanzuTacos.ShoppingBasketService" type="LaunchSettings" />
+    <toRun name="TanzuTacos.WebApp" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>
