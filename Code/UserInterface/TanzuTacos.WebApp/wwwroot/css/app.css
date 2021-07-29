@@ -182,10 +182,3 @@ a, .btn-link {
 		content: '£';
 	}
 
-.sidebar {
-	background-color: #2b2b2b;
-	width: 20rem;
-	display: flex;
-	flex-direction: column;
-	color: white;
-}

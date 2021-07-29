@@ -51,7 +51,7 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		var client = HttpClientFactory.CreateClient("WebApiProject");
+		var client = HttpClientFactory.CreateClient("FoodService");
 		extras = await client.GetFromJsonAsync<List<Extra>>("extras");
 	}
 

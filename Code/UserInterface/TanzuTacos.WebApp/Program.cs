@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using TanzuTacos.WebApp.DummyData;
 
 namespace TanzuTacos.WebApp
 {
@@ -15,10 +16,10 @@ namespace TanzuTacos.WebApp
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 			builder.RootComponents.Add<App>("#app");
 
-
-			builder.Services.AddHttpClient("WebApiProject", client =>
+			
+			builder.Services.AddHttpClient("FoodService", client =>
 			{
-				client.BaseAddress = new Uri("https://localhost:44347/");
+				client.BaseAddress = new Uri("https://localhost:44332/");
 			});
 
 			await builder.Build().RunAsync();

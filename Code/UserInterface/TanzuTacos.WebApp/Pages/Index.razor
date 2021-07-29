@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using Models
 @using System.Net.Http
+@using TanzuTacos.WebApp.DummyData
 @inject IHttpClientFactory HttpClientFactory
 
 @if (specials is null)
@@ -28,7 +29,7 @@ else
 	 </div>
 	</div>
 
-	<ShoppingBasket Order="order"/>
+	<ShoppingBasket Basket="basket" User="user"/>
 }
 
 @if (showingConfigureDialog)
@@ -39,14 +40,16 @@ else
 }
 
 @code {
+	Basket basket = new();
 	List<TacoSpecial> specials;
 	Taco configuringTaco;
 	bool showingConfigureDialog;
-	Order order = new();
+	DummyUser user  = new DummyUser();
 
 	protected override async Task OnInitializedAsync()
 	{
-		var client = HttpClientFactory.CreateClient("WebApiProject");
+		Console.WriteLine(user.Id);
+		var client = HttpClientFactory.CreateClient("FoodService");
 		specials = await client.GetFromJsonAsync<List<TacoSpecial>>("specials");
 	}
 
@@ -70,9 +73,8 @@ else
 
 	void ConfirmConfigureTacoDialog()
 	{
-		order.Tacos.Add(configuringTaco);
+		basket.Tacos.Add(configuringTaco);
 		configuringTaco = null;
-
 		showingConfigureDialog = false;
 	}
 
