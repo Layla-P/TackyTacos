@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.WebApi", "TanzuTacos.WebApi", "{548D126A-F000-44FA-8CAD-1E525B248B3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.WebApp", "TanzuTacos.WebApp", "{C37804AF-CA31-4A46-B435-3427059257EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.WebApi", "UserInterface\TanzuTacos.WebApi\TanzuTacos.WebApi.csproj", "{0E29A63B-6FB5-49EE-BB58-CC87F26A621C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.WebApp", "UserInterface\TanzuTacos.WebApp\TanzuTacos.WebApp.csproj", "{D9CCDA80-6FE2-49FB-8704-66FCDED5733F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.ShoppingBasketService", "TanzuTacos.ShoppingBasketService", "{14259D7E-EC81-41D8-A941-D190ED62317C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.ShoppingBasketService", "Microservices\TanzuTacos.ShoppingBasketService\TanzuTacos.ShoppingBasketService.csproj", "{67ECF907-C49F-40C9-87DB-916771121F22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E29A63B-6FB5-49EE-BB58-CC87F26A621C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E29A63B-6FB5-49EE-BB58-CC87F26A621C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E29A63B-6FB5-49EE-BB58-CC87F26A621C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E29A63B-6FB5-49EE-BB58-CC87F26A621C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CCDA80-6FE2-49FB-8704-66FCDED5733F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CCDA80-6FE2-49FB-8704-66FCDED5733F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CCDA80-6FE2-49FB-8704-66FCDED5733F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CCDA80-6FE2-49FB-8704-66FCDED5733F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67ECF907-C49F-40C9-87DB-916771121F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67ECF907-C49F-40C9-87DB-916771121F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67ECF907-C49F-40C9-87DB-916771121F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67ECF907-C49F-40C9-87DB-916771121F22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{548D126A-F000-44FA-8CAD-1E525B248B3B} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+		{C37804AF-CA31-4A46-B435-3427059257EA} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+		{0E29A63B-6FB5-49EE-BB58-CC87F26A621C} = {548D126A-F000-44FA-8CAD-1E525B248B3B}
+		{D9CCDA80-6FE2-49FB-8704-66FCDED5733F} = {C37804AF-CA31-4A46-B435-3427059257EA}
+		{14259D7E-EC81-41D8-A941-D190ED62317C} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{67ECF907-C49F-40C9-87DB-916771121F22} = {14259D7E-EC81-41D8-A941-D190ED62317C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}
+	EndGlobalSection
+EndGlobal
