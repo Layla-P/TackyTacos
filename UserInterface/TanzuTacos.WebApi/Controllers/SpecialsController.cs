@@ -10,7 +10,6 @@ namespace TanzuTacos.WebApi.Controllers
 	[ApiController]
 	public class SpecialsController : Controller
 	{
-		[DisableCors]
 		[HttpGet]
 		public async Task<ActionResult<List<TacoSpecial>>> GetSpecialsAsync()
 		{

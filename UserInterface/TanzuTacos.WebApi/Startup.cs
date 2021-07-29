@@ -61,9 +61,9 @@ namespace TanzuTacos.WebApi
 
 			app.UseHttpsRedirection();
 
-			app.UseCors();
-
 			app.UseRouting();
+
+			app.UseCors();
 
 			app.UseAuthorization();
 
