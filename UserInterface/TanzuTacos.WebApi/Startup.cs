@@ -34,9 +34,6 @@ namespace TanzuTacos.WebApi
 								  builder =>
 								  {
 									  builder.WithOrigins("http://localhost:23125");
-									  builder.AllowAnyHeader();
-									  builder.AllowAnyMethod();
-									  //builder.AllowAnyOrigin();
 								  });
 			});
 
