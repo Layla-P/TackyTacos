@@ -3,12 +3,12 @@
 
 <nav class="navbar fixed-bottom navbar-light bg-light">
   <div class="container-fluid">
-   @if (Basket.Tacos.Any())
+   @if (Order.Tacos.Any())
 		{
 		 <div class="basket-contents">
 		  <h2>Your basket</h2>
 
-				@foreach (var configuredTaco in Basket.Tacos)
+				@foreach (var configuredTaco in Order.Tacos)
 				{
 			  <ConfiguredTacoItem Taco="configuredTaco" OnRemoved="@(() => RemoveConfiguredTaco(configuredTaco))" />
 				}
@@ -19,11 +19,11 @@
 		 <div class="empty-cart">Choose a taco<br>to get started</div>
 		}
 
-	 <div class="basket-total @(Basket.Tacos.Any() ? "" : "hidden")">
+	 <div class="basket-total @(Order.Tacos.Any() ? "" : "hidden")">
 	  Total:
-	  <span class="total-price">@Basket.GetFormattedTotalPrice()</span>
-	  <button class="btn btn-warning" disabled="@(Basket.Tacos.Count == 0)" @onclick="PlaceBasket">
-	   Basket >
+	  <span class="total-price">@Order.GetFormattedTotalPrice()</span>
+	  <button class="btn btn-warning" disabled="@(Order.Tacos.Count == 0)" @onclick="PlaceOrder">
+	   Order >
 	  </button>
 	 </div>
   </div>
@@ -31,19 +31,19 @@
 
 
 @code {
-	[Parameter] public Basket Basket { get; set; }
+	[Parameter] public Order Order { get; set; }
 	[Parameter] public DummyUser User { get; set; }
 
 	void RemoveConfiguredTaco(Taco taco)
 	{
-		Basket.Tacos.Remove(taco);
+		Order.Tacos.Remove(taco);
 	}
 
-	async Task PlaceBasket()
+	async Task PlaceOrder()
 	{
 		//Check if user is loggedIn for now assume they are and use dummy userId
 		//await HttpClient.PostAsJsonAsync("baskets", basket);
-		Console.WriteLine($"Basket placed with user id:{User.Id} and basket id:{Basket.BasketId}!");
-		Basket = new Basket(User.Id);
+		Console.WriteLine($"Order placed with user id:{User.Id} and basket id:{Order.Id}!");
+		Order = new Order(User.Id.ToString());
 	}
 }

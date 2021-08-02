@@ -1,9 +1,8 @@
 ﻿using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using TanzuTacos.OrderService.Models;
 
@@ -14,15 +13,27 @@ namespace TanzuTacos.OrderService.Data
 		private IDocumentClient _documentClient;
 		private IList<IDocumentDbEntity> _documentDbEntities;
 
-		public string DatabaseId { get; set; }
-		public string EndpointUri { get; set; }
-		public string AuthKey { get; set; }
+		public readonly DbSettings _settings;
+
+
+		public DocumentDbContext(IOptions<DbSettings> settings)
+		{
+			_settings = settings.Value;
+
+			_databaseId = _settings.DatabaseId;
+			_endpointUri = _settings.EndpointUri;
+			_authKey = _settings.AuthKey;
+		}
+
+		public string _databaseId { get; }
+		public string _endpointUri { get; }
+		public string _authKey { get; }
 
 		public IDocumentClient DocumentClient
 		{
 			get
 			{
-				if(_documentClient is null)
+				if (_documentClient is null)
 				{
 					_documentClient = GetDocumentClient();
 				}
@@ -34,7 +45,7 @@ namespace TanzuTacos.OrderService.Data
 		{
 			get
 			{
-				if(_documentDbEntities is null)
+				if (_documentDbEntities is null)
 				{
 					_documentDbEntities = GetDocumentEntities();
 				}
@@ -42,12 +53,14 @@ namespace TanzuTacos.OrderService.Data
 			}
 		}
 
+
+
 		public async Task CreateDatabaseAndCollectionAsync()
 		{
-			await CreateDatabaseAsync(DatabaseId);
-			foreach(var entity in EntityCollection)
+			await CreateDatabaseAsync(_settings.DatabaseId);
+			foreach (var entity in EntityCollection)
 			{
-				await CreateDatabaseAndCollectionAsync(DatabaseId, entity.Name);
+				await CreateDatabaseAndCollectionAsync(_settings.DatabaseId, entity.Name);
 			}
 		}
 
@@ -71,13 +84,13 @@ namespace TanzuTacos.OrderService.Data
 
 			connectionPolicy.PreferredLocations.Add(LocationNames.UKSouth);
 
-			return new DocumentClient(new Uri(EndpointUri), AuthKey, connectionPolicy);
+			return new DocumentClient(new Uri(_settings.EndpointUri), _settings.AuthKey, connectionPolicy);
 		}
 
 
 		private List<IDocumentDbEntity> GetDocumentEntities()
 		{
-			 return new List<IDocumentDbEntity>
+			return new List<IDocumentDbEntity>
 			{
 				new DocumentDbEntity { EntityType = typeof(Order), Name = "OrderCollection"}
 			};
@@ -86,9 +99,17 @@ namespace TanzuTacos.OrderService.Data
 
 		private async Task<Database> CreateDatabaseAsync(string databaseId)
 		{
-			var response = await DocumentClient.CreateDatabaseIfNotExistsAsync(
-				new Database { Id = databaseId });
-			return response.Resource;
+			try
+			{
+				var db = new Database { Id = databaseId };
+				var response = await DocumentClient.CreateDatabaseIfNotExistsAsync(db);
+				return response.Resource;
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex);
+				throw;
+			}
 		}
 
 		private async Task<DocumentCollection> CreateDatabaseAndCollectionAsync(string databaseId, string collectionName)

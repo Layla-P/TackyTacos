@@ -6,9 +6,9 @@ namespace TanzuTacos.OrderService.Data
 {
 	public interface IDocumentDbContext
 	{
-		string DatabaseId { get; set; }
-		string EndpointUri { get; set; }
-		string AuthKey { get; set; }
+		string _databaseId { get; }
+		string _endpointUri { get; }
+		string _authKey { get; }
 		IDocumentClient DocumentClient { get; }
 		ICollection<IDocumentDbEntity> EntityCollection { get; }
 		Task CreateDatabaseAndCollectionAsync();

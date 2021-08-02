@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace TanzuTacos.WebApp.Models
 {
-	public class Basket
+	public class Order
 	{
-		public Basket()
+		public Order()
 		{
 			UserId = null;
 		}
-		public Basket(string userId)
+		public Order(string userId)
 		{
 			UserId = userId;
 		}
-		public int BasketId { get; set; }
+		public Guid Id { get; set; }
 
 		public string UserId { get; set; }
 

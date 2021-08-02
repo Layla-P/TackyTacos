@@ -40,7 +40,7 @@ else
 }
 
 @code {
-	Basket basket = new();
+	Order order = new();
 	List<TacoSpecial> specials;
 	Taco configuringTaco;
 	bool showingConfigureDialog;
@@ -73,7 +73,7 @@ else
 
 	void ConfirmConfigureTacoDialog()
 	{
-		basket.Tacos.Add(configuringTaco);
+		order.Tacos.Add(configuringTaco);
 		configuringTaco = null;
 		showingConfigureDialog = false;
 	}
