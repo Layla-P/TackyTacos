@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TanzuTacos.OrderService.Models
 {
 	public class Order
 	{
-
+		[JsonProperty(PropertyName ="id")]
 		public Guid Id { get; set; }
 
 		public Guid UserId { get; set; }

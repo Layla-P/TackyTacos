@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <UserSecretsId>ffce190d-56db-4c41-98d8-6ac6da20b30e</UserSecretsId>
+	<TargetFramework>net6.0</TargetFramework>
+	<UserSecretsId>ffce190d-56db-4c41-98d8-6ac6da20b30e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.20.1" />
-    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.15.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <Content Remove="C:\Users\Layla\.nuget\packages\microsoft.azure.cosmos\3.20.1\contentFiles\any\netstandard2.0\ThirdPartyNotice.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.20.1" />
+	<PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.15.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+	<PackageReference Include="Steeltoe.Messaging.RabbitMQ" Version="3.1.0" />
   </ItemGroup>
 
 </Project>

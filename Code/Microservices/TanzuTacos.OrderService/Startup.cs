@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Steeltoe.Messaging.RabbitMQ.Extensions;
+using TanzuTacos.OrderService.Messaging;
 using TanzuTacos.OrderService.Models;
+using Steeltoe.Messaging.RabbitMQ.Config;
+using TanzuTacos.OrderService.Helpers;
 
 namespace TanzuTacos.OrderService
 {
@@ -43,6 +40,21 @@ namespace TanzuTacos.OrderService
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "TanzuTacos.OrderService", Version = "v1" });
 			});
+
+
+			// Messaging
+
+			// Add a queue to be declared
+			services.AddRabbitQueue(new Queue("orderqueue"));
+
+			// Add the rabbit listener service
+			services.AddSingleton<Listener>();
+
+			// Tell Steeltoe about listener
+			services.AddRabbitListeners<Listener>();
+
+			// Add a background service to send messages to myqueue
+			services.AddSingleton<IHostedService, Sender>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +66,9 @@ namespace TanzuTacos.OrderService
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TanzuTacos.OrderService v1"));
 			}
+
+			//Start the Rabbit message sender
+			app.UseRabbitMqConsumer();
 
 			app.UseHttpsRedirection();
 
