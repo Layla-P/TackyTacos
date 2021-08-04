@@ -1,64 +1,138 @@
-﻿using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using Newtonsoft.Json;
+﻿using Azure.Cosmos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
 using TanzuTacos.OrderService.Models;
 
 namespace TanzuTacos.OrderService.Data
 {
-	public class OrdersRepository : IDocumentDbRepository<Order>
+	public class OrdersRepository
 	{
-		private readonly IDocumentDbContext _context;
-		private DocumentCollection _documentCollection;
-		public OrdersRepository(IDocumentDbContext context)
+		private readonly CosmosDbContext _context;
+		public OrdersRepository(CosmosDbContext context)
 		{
 			_context = context;
-			var entityMetadata = _context.EntityCollection.FirstOrDefault(p => p.EntityType == typeof(Order));
-			Task.Run(async () => _documentCollection
-			= await _context.DocumentClient.ReadDocumentCollectionAsync(
-				UriFactory.CreateDocumentCollectionUri(_context._databaseId, entityMetadata.Name))).Wait();
 		}
 
-		public async Task<Order> AddOrUpdateAsync(Order entity)
+		public async Task<Order> AddOrUpdateAsync(Order order)
 		{
-			var upsertedDoc = await _context
-				.DocumentClient.UpsertDocumentAsync(
-				_documentCollection.SelfLink, entity);
+			if (string.IsNullOrEmpty(order.Partition))
+			{
+				order.Partition = order.CreatedTime.DayOfWeek.ToString();
+			}
 
-			return JsonConvert.DeserializeObject<Order>(upsertedDoc.Resource.ToString());
+			CosmosContainer container = await _context.GetContainerAsync();
+			ItemResponse<Order> orderResponse;
+			try
+			{
+				// Read the item to see if it exists.  
+				orderResponse = await container.ReadItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
+				Console.WriteLine($"Item in database with id: {orderResponse.Value.Id} already exists\n");
+			}
+			catch (CosmosException ex) when (ex.Status == (int)HttpStatusCode.NotFound)
+			{
+				// Create an item in the container representing the Andersen family. Note we provide the value of the partition key for this item, which is "Andersen"
+				orderResponse = await container.CreateItemAsync<Order>(order, new PartitionKey(order.Partition));
+
+				// Note that after creating the item, we can access the body of the item with the Resource property off the ItemResponse.
+				Console.WriteLine($"Created item in database with id: {orderResponse.Value.Id}\n");
+			}
+
+			return orderResponse.Value;
 		}
 
-		public async Task<Order> GetByIdAsync(Guid id)
+		/// <summary>
+		/// Replace an item in the container as an update
+		/// </summary>
+		public async Task<Order> ReplaceOrderItemAsync(Order order)
 		{
-			var result = await Task.Run(
-				() => _context.DocumentClient.CreateDocumentQuery<Order>(
-					UriFactory.CreateDocumentCollectionUri(_context._databaseId, _documentCollection.Id))
-				.Where(p => p.Id == id).ToList());
+			if (string.IsNullOrEmpty(order.Partition))
+			{
+				order.Partition = order.CreatedTime.DayOfWeek.ToString();
+			}
 
-			return result != null && result.Any() ? result.FirstOrDefault() : null;
+			CosmosContainer container = await _context.GetContainerAsync();
+
+			ItemResponse<Order> orderResponse = await container.ReadItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
+			Order itemBody = orderResponse;
+
+			// replace the item with the updated content
+			orderResponse = await container.ReplaceItemAsync<Order>(itemBody, itemBody.Id.ToString(), new PartitionKey(itemBody.Partition));
+			Console.WriteLine($"Updated Order [{itemBody.Id}].\n \tBody is now: {orderResponse.Value}\n");
+
+			return orderResponse.Value;
 		}
 
-		public async Task<bool> RemoveAsync(Guid id)
+		public async Task<Order> GetByIdAsync(Order order)
 		{
-			var result = await _context.DocumentClient.DeleteDocumentAsync(
-				UriFactory.CreateDocumentUri(
-					_context._databaseId, _documentCollection.Id, id.ToString()));
+			CosmosContainer container = await _context.GetContainerAsync();
 
-			return result.StatusCode == HttpStatusCode.NoContent;
+			ItemResponse<Order> orderResponse = await container.ReadItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
+
+			return orderResponse != null ? orderResponse.Value : null;
 		}
 
-		public async Task<IQueryable<Order>> WhereAsync(Expression<Func<Order, bool>> predicate)
+		public async Task<List<Order>> QueryItemsAsync(string sqlQuery)
 		{
-			return await Task.Run(
-				() => _context.DocumentClient
-				.CreateDocumentQuery<Order>(
-					UriFactory.CreateDocumentCollectionUri(_context._databaseId, _documentCollection.Id))
-				.Where(predicate));
+
+			CosmosContainer container = await _context.GetContainerAsync();
+
+			QueryDefinition queryDefinition = new QueryDefinition(sqlQuery);
+
+			List<Order> orders = new();
+
+			await foreach (Order order in container.GetItemQueryIterator<Order>(queryDefinition))
+			{
+				orders.Add(order);
+				Console.WriteLine($"\tRead {order}\n");
+			}
+
+			return orders != null && orders.Any() ? orders : null;
 		}
+
+		public async Task DeleteOrderItemAsync(Order order)
+		{
+			CosmosContainer container = await _context.GetContainerAsync();
+
+			// Delete an item. Note we must provide the partition key value and id of the item to delete
+			ItemResponse<Order> order2Response = await container.DeleteItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
+			Console.WriteLine($"Deleted Order {order.Id}\n");
+		}
+
+		// LINQ queries currently not available on Azure.Cosmos
+		//public async Task<IQueryable<Order>> WhereAsync(Expression<Func<Order, bool>> predicate)
+		//{
+		//	//https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.container.getitemlinqqueryable?view=azure-dotnet
+		//	CosmosContainer container = await _context.GetContainerAsync();
+
+		//	container
+		//	//using (FeedIterator<Order> setIterator = container.GetItemLinqQueryable<Order>()
+		//	//		  .Where(b => b.Title == "War and Peace")
+		//	//		  .ToFeedIterator<Book>())
+		//	//{
+		//	//	//Asynchronous query execution
+		//	//	while (setIterator.HasMoreResults)
+		//	//	{
+		//	//		foreach (var item in await setIterator.ReadNextAsync())
+		//	//		{
+		//	//			{
+		//	//				Console.WriteLine(item.cost);
+		//	//			}
+		//	//		}
+		//	//	}
+		//	//}
+		//	QueryDefinition queryDefinition = new QueryDefinition(predicate);
+
+		//	return await Task.Run(
+		//		() => _context.DocumentClient
+		//		.CreateDocumentQuery<Order>(
+		//			UriFactory.CreateDocumentCollectionUri(_context._databaseId, _documentCollection.Id))
+		//		.Where(predicate));
+		//}
+
+
+
 	}
 }

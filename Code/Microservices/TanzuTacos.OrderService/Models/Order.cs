@@ -1,12 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using System;
 
 namespace TanzuTacos.OrderService.Models
 {
 	public class Order
 	{
-		[JsonProperty(PropertyName ="id")]
+		[JsonPropertyName("id")]
 		public Guid Id { get; set; }
+
+		[JsonPropertyName("WeekDay")]
+		public string Partition { get; set; }
 
 		public Guid UserId { get; set; }
 
@@ -19,5 +23,9 @@ namespace TanzuTacos.OrderService.Models
 		public decimal TotalPrice { get; set; }
 		public DateTime OrderPlaced { get; set; }
 		public bool OrderPaid { get; set; }
-	}
+
+		public override string ToString() => JsonSerializer.Serialize(this);
+
+		
+}
 }
