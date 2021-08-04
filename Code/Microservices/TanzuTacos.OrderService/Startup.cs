@@ -42,10 +42,10 @@ namespace TanzuTacos.OrderService
 			});
 
 
-			// Messaging
+			// Messaging from Steeltoe
 
 			// Add a queue to be declared
-			services.AddRabbitQueue(new Queue("orderqueue"));
+			services.AddRabbitQueue(new Queue("unpaidorderqueue"));
 
 			// Add the rabbit listener service
 			services.AddSingleton<Listener>();

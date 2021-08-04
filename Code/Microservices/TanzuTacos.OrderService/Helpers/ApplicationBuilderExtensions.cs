@@ -25,6 +25,7 @@ namespace TanzuTacos.OrderService.Helpers
 		{
 			var token = new CancellationToken();
 			RabbitMqConsumer.StartAsync(token);
+
 		}
 
 		private static void OnStopping()
