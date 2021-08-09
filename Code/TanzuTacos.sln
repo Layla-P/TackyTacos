@@ -25,6 +25,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.PaymentService",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.PaymentService", "Microservices\TanzuTacos.PaymentService\TanzuTacos.PaymentService.csproj", "{F0AB41E2-D143-408D-95E8-03046CC0AAFB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalApis", "ExternalApis", "{AE5072B1-8DD7-402A-8B31-1CE38CEF9EA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentGateway", "PaymentGateway", "{7D356E7B-AA08-44B3-9C49-30A632D15652}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway", "ExternalApis\PaymentGateway\PaymentGateway.csproj", "{07272A3C-A64A-485D-BF68-1384F4E94E5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.NotificationService", "TanzuTacos.NotificationService", "{B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.NotificationService", "Microservices\TanzuTacos.NotificationService\TanzuTacos.NotificationService.csproj", "{65921B90-4592-466E-B5F1-4E0C757C5B07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +61,14 @@ Global
 		{F0AB41E2-D143-408D-95E8-03046CC0AAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0AB41E2-D143-408D-95E8-03046CC0AAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0AB41E2-D143-408D-95E8-03046CC0AAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +82,10 @@ Global
 		{266450E7-85A7-4CBA-B4A4-E159D5FACE32} = {DAF1217A-51D4-474A-B771-D9EA45800C74}
 		{29139162-7CA1-464C-A682-A2770F46069A} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
 		{F0AB41E2-D143-408D-95E8-03046CC0AAFB} = {29139162-7CA1-464C-A682-A2770F46069A}
+		{7D356E7B-AA08-44B3-9C49-30A632D15652} = {AE5072B1-8DD7-402A-8B31-1CE38CEF9EA0}
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B} = {7D356E7B-AA08-44B3-9C49-30A632D15652}
+		{B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{65921B90-4592-466E-B5F1-4E0C757C5B07} = {B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}

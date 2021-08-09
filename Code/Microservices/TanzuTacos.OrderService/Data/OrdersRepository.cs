@@ -1,4 +1,5 @@
-﻿using Azure.Cosmos;
+﻿using Azure;
+using Azure.Cosmos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,23 +75,27 @@ namespace TanzuTacos.OrderService.Data
 			return orderResponse != null ? orderResponse.Value : null;
 		}
 
-		public async Task<List<Order>> QueryItemsAsync(string sqlQuery)
+
+		public async Task<List<Order>> GetAllByIdAsync(string id, bool excludePaid = false)
 		{
-
-			CosmosContainer container = await _context.GetContainerAsync();
-
-			QueryDefinition queryDefinition = new QueryDefinition(sqlQuery);
-
-			List<Order> orders = new();
-
-			await foreach (Order order in container.GetItemQueryIterator<Order>(queryDefinition))
+			id = id.ToLower();
+			string sqlQueryText = $"SELECT * FROM c WHERE c.id = '{id}'";
+			if (excludePaid)
 			{
-				orders.Add(order);
-				Console.WriteLine($"\tRead {order}\n");
+				sqlQueryText = $"SELECT * FROM c WHERE c.id = '{id}' AND c.OrderPaid = false";
 			}
 
-			return orders != null && orders.Any() ? orders : null;
+			return await GetAllByIdAsync(sqlQueryText);
+
 		}
+
+		public async Task<List<Order>> GetAllNotPaidAsync()
+		{
+			var sqlQueryText = $"SELECT * FROM c WHERE c.OrderPaid = false";
+
+			return await GetAllByIdAsync(sqlQueryText);
+		}
+
 
 		public async Task DeleteOrderItemAsync(Order order)
 		{
@@ -99,6 +104,23 @@ namespace TanzuTacos.OrderService.Data
 			// Delete an item. Note we must provide the partition key value and id of the item to delete
 			ItemResponse<Order> order2Response = await container.DeleteItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
 			Console.WriteLine($"Deleted Order {order.Id}\n");
+		}
+
+
+		private async Task<List<Order>> GetByQueryAsync(string queryText)
+		{
+			CosmosContainer container = await _context.GetContainerAsync();
+
+			QueryDefinition queryDefinition = new QueryDefinition(queryText);
+
+			List<Order> orders = new();
+			await foreach (Order order in container.GetItemQueryIterator<Order>(queryDefinition))
+			{
+				orders.Add(order);
+				Console.WriteLine($"\tRead {order} is unpaid\n");
+			}
+
+			return orders != null && orders.Any() ? orders : null;
 		}
 
 		// LINQ queries currently not available on Azure.Cosmos

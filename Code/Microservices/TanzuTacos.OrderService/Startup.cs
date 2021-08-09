@@ -4,10 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Steeltoe.Messaging.RabbitMQ.Extensions;
-using TanzuTacos.OrderService.Messaging;
 using TanzuTacos.OrderService.Models;
-using Steeltoe.Messaging.RabbitMQ.Config;
 using TanzuTacos.OrderService.Helpers;
 
 namespace TanzuTacos.OrderService
@@ -41,20 +38,6 @@ namespace TanzuTacos.OrderService
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "TanzuTacos.OrderService", Version = "v1" });
 			});
 
-
-			// Messaging from Steeltoe
-
-			// Add a queue to be declared
-			services.AddRabbitQueue(new Queue("unpaidorderqueue"));
-
-			// Add the rabbit listener service
-			services.AddSingleton<Listener>();
-
-			// Tell Steeltoe about listener
-			services.AddRabbitListeners<Listener>();
-
-			// Add a background service to send messages to myqueue
-			services.AddSingleton<IHostedService, Sender>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
