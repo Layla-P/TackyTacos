@@ -100,7 +100,7 @@ namespace TanzuTacos.OrderService.Data
 		public async Task DeleteOrderItemAsync(Order order)
 		{
 			CosmosContainer container = await _context.GetContainerAsync();
-
+			
 			// Delete an item. Note we must provide the partition key value and id of the item to delete
 			ItemResponse<Order> order2Response = await container.DeleteItemAsync<Order>(order.Id.ToString(), new PartitionKey(order.Partition));
 			Console.WriteLine($"Deleted Order {order.Id}\n");

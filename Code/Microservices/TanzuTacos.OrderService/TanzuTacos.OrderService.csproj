@@ -11,11 +11,8 @@
 
   <ItemGroup>
 	<PackageReference Include="Azure.Cosmos" Version="4.0.0-preview3" />
+	<PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Messaging\" />
   </ItemGroup>
 
 </Project>

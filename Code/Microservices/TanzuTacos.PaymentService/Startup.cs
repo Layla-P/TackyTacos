@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TanzuTacos.PaymentService.Helpers;
+using TanzuTacos.PaymentService.Messaging;
 
 namespace TanzuTacos.PaymentService
 {
-    public class Startup
+	public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -26,8 +21,10 @@ namespace TanzuTacos.PaymentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
+			services.SetUpRabbitMQ(Configuration);
+			services.AddSingleton<RabbitReceiver>();
+			services.AddHostedService<RabbitReceiver>();
+			services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TanzuTacos.PaymentService", Version = "v1" });
@@ -50,7 +47,9 @@ namespace TanzuTacos.PaymentService
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+			app.UseRabbitMqConsumer();
+
+			app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });

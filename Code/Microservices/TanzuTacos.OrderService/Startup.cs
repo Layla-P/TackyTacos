@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TanzuTacos.OrderService.Models;
 using TanzuTacos.OrderService.Helpers;
+using TanzuTacos.OrderService.Data;
+using TanzuTacos.OrderService.Messaging;
+using TanzuTacos.OrderService.Services;
 
 namespace TanzuTacos.OrderService
 {
@@ -22,6 +25,12 @@ namespace TanzuTacos.OrderService
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.Configure<DbSettings>(Configuration.GetSection("DbSettings"));
+
+			services.SetUpRabbitMQ(Configuration);
+			services.AddSingleton<RabbitSender>();
+			services.AddSingleton<CosmosDbContext>();
+			services.AddSingleton<OrdersRepository>();
+			services.AddSingleton<OrdersService>();
 
 			services.AddCors(options =>
 			{
