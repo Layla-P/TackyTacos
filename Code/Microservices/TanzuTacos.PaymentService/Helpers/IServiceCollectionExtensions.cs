@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using TanzuTacos.PaymentService.Models;
 
 namespace TanzuTacos.PaymentService.Helpers

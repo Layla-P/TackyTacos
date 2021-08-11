@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Configuration;
 using TanzuTacos.OrderService.Models;
-using Microsoft.Extensions.Options;
-using TanzuTacos.OrderService.Messaging;
 
 namespace TanzuTacos.OrderService.Helpers
 {
