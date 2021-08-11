@@ -19,7 +19,7 @@ namespace TanzuTacos.PaymentService.Helpers
 			var settings = new RabbitMQSettings();
 			configSection.Bind(settings);
 
-			var factory = new ConnectionFactory() { HostName =settings.HostName };
+			var factory = new ConnectionFactory() { HostName = settings.HostName };
 			var connection = factory.CreateConnection();
 			var channel = connection.CreateModel();
 			channel.ExchangeDeclare(exchange: settings.ExchangeName,

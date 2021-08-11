@@ -13,7 +13,6 @@ namespace TanzuTacos.OrderService.Helpers
 
 		public static IServiceCollection SetUpRabbitMQ(this IServiceCollection services, IConfiguration config)
 		{
-
 			var configSection = config.GetSection("RabbitMQSettings");
 
 			services.Configure<RabbitMQSettings>(configSection);
