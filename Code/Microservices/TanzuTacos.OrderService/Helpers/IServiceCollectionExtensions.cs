@@ -13,16 +13,15 @@ namespace TanzuTacos.OrderService.Helpers
 
 		public static IServiceCollection SetUpRabbitMQ(this IServiceCollection services, IConfiguration config)
 		{
-			var settings = new RabbitMQSettings
-			{
-				ExchangeName = config.GetValue<string>("RabbitMQSettings:ExchangeName"),
-				HostName = config.GetValue<string>("RabbitMQSettings:HostName"),
-				ExchangeType = config.GetValue<string>("RabbitMQSettings:ExchangeType"),
-			};
-			
-			services.Configure<RabbitMQSettings>(config.GetSection("RabbitMQSettings"));
 
-			var factory = new ConnectionFactory() { HostName = "localhost" };
+			var configSection = config.GetSection("RabbitMQSettings");
+
+			services.Configure<RabbitMQSettings>(configSection);
+
+			var settings = new RabbitMQSettings();
+			configSection.Bind(settings);
+
+			var factory = new ConnectionFactory() { HostName = settings.HostName };
 			var connection = factory.CreateConnection();
 			var channel = connection.CreateModel();
 			channel.ExchangeDeclare(exchange: settings.ExchangeName,
