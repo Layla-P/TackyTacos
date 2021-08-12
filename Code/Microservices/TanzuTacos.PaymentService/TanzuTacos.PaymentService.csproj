@@ -13,4 +13,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\NuGetPackages\TanzuTacos.Messaging\TanzuTacos.Messaging.csproj" />
+  </ItemGroup>
+
 </Project>

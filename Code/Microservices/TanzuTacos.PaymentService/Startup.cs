@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using TanzuTacos.Messaging;
 using TanzuTacos.PaymentService.Helpers;
 using TanzuTacos.PaymentService.Messaging;
 

@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Configuration;
-using TanzuTacos.PaymentService.Models;
 
-namespace TanzuTacos.PaymentService.Helpers
+namespace TanzuTacos.Messaging
 {
 	public static class IServiceCollectionExtensions
 	{

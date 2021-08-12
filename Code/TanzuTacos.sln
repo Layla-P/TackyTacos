@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TanzuTacos.NotificationServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TanzuTacos.NotificationService", "Microservices\TanzuTacos.NotificationService\TanzuTacos.NotificationService.csproj", "{65921B90-4592-466E-B5F1-4E0C757C5B07}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGetPackages", "NuGetPackages", "{E6021E21-4547-40B3-81EE-D8854C1D905A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanzuTacos.Messaging", "NuGetPackages\TanzuTacos.Messaging\TanzuTacos.Messaging.csproj", "{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65921B90-4592-466E-B5F1-4E0C757C5B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,7 @@ Global
 		{07272A3C-A64A-485D-BF68-1384F4E94E5B} = {7D356E7B-AA08-44B3-9C49-30A632D15652}
 		{B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
 		{65921B90-4592-466E-B5F1-4E0C757C5B07} = {B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8}
+		{3CE089F1-91C4-410F-AE50-7CE4FCF5FD4B} = {E6021E21-4547-40B3-81EE-D8854C1D905A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}

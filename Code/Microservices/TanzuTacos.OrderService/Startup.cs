@@ -5,10 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TanzuTacos.OrderService.Models;
-using TanzuTacos.OrderService.Helpers;
 using TanzuTacos.OrderService.Data;
 using TanzuTacos.OrderService.Messaging;
 using TanzuTacos.OrderService.Services;
+using TanzuTacos.Messaging;
 
 namespace TanzuTacos.OrderService
 {

@@ -1,4 +1,4 @@
-﻿namespace TanzuTacos.PaymentService.Models
+﻿namespace TanzuTacos.Messaging
 {
 
 	public class RabbitMQSettings

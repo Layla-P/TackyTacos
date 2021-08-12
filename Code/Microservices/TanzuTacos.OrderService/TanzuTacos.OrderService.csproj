@@ -15,4 +15,8 @@
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\NuGetPackages\TanzuTacos.Messaging\TanzuTacos.Messaging.csproj" />
+  </ItemGroup>
+
 </Project>
