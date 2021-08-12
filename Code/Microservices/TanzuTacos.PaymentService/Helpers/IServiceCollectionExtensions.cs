@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using TanzuTacos.PaymentService.Models;
 
 namespace TanzuTacos.PaymentService.Helpers
@@ -12,16 +10,14 @@ namespace TanzuTacos.PaymentService.Helpers
 
 		public static IServiceCollection SetUpRabbitMQ(this IServiceCollection services, IConfiguration config)
 		{
-			var settings = new RabbitMQSettings
-			{
-				ExchangeName = config.GetValue<string>("RabbitMQSettings:ExchangeName"),
-				HostName = config.GetValue<string>("RabbitMQSettings:HostName"),
-				ExchangeType = config.GetValue<string>("RabbitMQSettings:ExchangeType"),
-			};
-			
-			services.Configure<RabbitMQSettings>(config.GetSection("RabbitMQSettings"));
+			var configSection = config.GetSection("RabbitMQSettings");
 
-			var factory = new ConnectionFactory() { HostName = "localhost" };
+			services.Configure<RabbitMQSettings>(configSection);
+
+			var settings = new RabbitMQSettings();
+			configSection.Bind(settings);
+
+			var factory = new ConnectionFactory() { HostName = settings.HostName };
 			var connection = factory.CreateConnection();
 			var channel = connection.CreateModel();
 			channel.ExchangeDeclare(exchange: settings.ExchangeName,
