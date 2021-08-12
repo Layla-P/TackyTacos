@@ -59,9 +59,6 @@ namespace TanzuTacos.OrderService
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TanzuTacos.OrderService v1"));
 			}
 
-			//Start the Rabbit message sender
-			app.UseRabbitMqConsumer();
-
 			app.UseHttpsRedirection();
 
 			app.UseRouting();

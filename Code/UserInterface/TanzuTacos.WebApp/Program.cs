@@ -19,7 +19,7 @@ namespace TanzuTacos.WebApp
 			
 			builder.Services.AddHttpClient("FoodService", client =>
 			{
-				client.BaseAddress = new Uri("https://localhost:44332/");
+				client.BaseAddress = new Uri("https://localhost:5011/");
 			});
 
 			await builder.Build().RunAsync();

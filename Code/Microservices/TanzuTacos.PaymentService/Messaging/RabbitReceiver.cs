@@ -6,7 +6,7 @@ using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TanzuTacos.PaymentService.Models;
+using TanzuTacos.Messaging;
 
 namespace TanzuTacos.PaymentService.Messaging
 {
