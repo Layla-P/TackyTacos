@@ -23,18 +23,27 @@ namespace TanzuTacos.OrderService.Controllers
 		//	return await Task.FromResult(GetSpecialsList());
 		//}
 
-		[HttpGet]
-		public async Task<HttpStatusCode> GetSpecialsAsync()
-		{
-			var order = new Order
-			{
-				Id = Guid.NewGuid(),
-				CreatedTime = DateTime.Now,
-				OrderPlaced = DateTime.Now,
-				OrderPaid = false,
-				TotalPrice = 40M
-			};
+		//[HttpGet]
+		//public async Task<HttpStatusCode> GetSpecialsAsync()
+		//{
+		//	var order = new Order
+		//	{
+		//		Id = Guid.NewGuid(),
+		//		CreatedTime = DateTime.Now,
+		//		OrderPlaced = DateTime.Now,
+		//		OrderPaid = false,
+		//		TotalPrice = 40M
+		//	};
 
+		//	await _ordersService.AddOrderAsync(order);
+
+		//	return HttpStatusCode.OK;
+		//}
+
+		[HttpPost]
+		public async Task<HttpStatusCode> Post([FromBody]Order order)
+		{
+			
 			await _ordersService.AddOrderAsync(order);
 
 			return HttpStatusCode.OK;

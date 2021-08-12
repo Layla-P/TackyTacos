@@ -1,5 +1,10 @@
 ﻿@using TanzuTacos.WebApp.DummyData
 @using TanzuTacos.WebApp.Models
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@using System.Text
+@using System.Net.Mime
+@inject IHttpClientFactory HttpClientFactory
 
 <nav class="navbar fixed-bottom navbar-light bg-light">
   <div class="container-fluid">
@@ -41,9 +46,24 @@
 
 	async Task PlaceOrder()
 	{
-		//Check if user is loggedIn for now assume they are and use dummy userId
-		//await HttpClient.PostAsJsonAsync("baskets", basket);
-		Console.WriteLine($"Order placed with user id:{User.Id} and basket id:{Order.Id}!");
-		Order = new Order(User.Id.ToString());
+		Console.WriteLine("Placing order");
+		try
+		{
+			Order.UserId = User.Id;
+			var client = HttpClientFactory.CreateClient("OrderService");
+			var orderString = JsonSerializer.Serialize(Order);
+			var content = new StringContent(orderString, Encoding.UTF8, MediaTypeNames.Application.Json );
+			
+			var response = await client.PostAsync("orders", content);
+			Console.WriteLine($"Status code from Order Service:{response}!");
+			//Check if user is loggedIn for now assume they are and use dummy userId
+
+			Console.WriteLine($"Order placed with user id:{User.Id} and order id:{Order.Id}!");
+		}
+		catch(Exception ex)
+		{
+			Console.WriteLine(ex);
+		}
+		
 	}
 }

@@ -32,7 +32,8 @@ namespace TanzuTacos.FoodService
 				options.AddDefaultPolicy(
 								  builder =>
 								  {
-									  builder.WithOrigins("http://localhost:23125");
+									  builder.WithOrigins("https://localhost:44365")
+									  .AllowAnyMethod();
 								  });
 			});
 

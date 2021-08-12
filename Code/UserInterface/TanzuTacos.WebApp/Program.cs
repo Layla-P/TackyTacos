@@ -16,10 +16,15 @@ namespace TanzuTacos.WebApp
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 			builder.RootComponents.Add<App>("#app");
 
-			
+			//extract the URIs to settings or config
 			builder.Services.AddHttpClient("FoodService", client =>
 			{
 				client.BaseAddress = new Uri("https://localhost:5011/");
+			});
+
+			builder.Services.AddHttpClient("OrderService", client =>
+			{
+				client.BaseAddress = new Uri("https://localhost:5031/");
 			});
 
 			await builder.Build().RunAsync();
