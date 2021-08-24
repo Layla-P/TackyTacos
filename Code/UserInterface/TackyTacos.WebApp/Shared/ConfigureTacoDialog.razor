@@ -1,0 +1,85 @@
+﻿@using TackyTacos.WebApp.Models
+@using System.Net.Http
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="dialog-container">
+	<div class="dialog">
+		<div class="dialog-title">
+			<h2>@Taco.Special.Name</h2>
+			@Taco.Special.Description
+		</div>
+		<form class="dialog-body">
+
+			@if (extras is null)
+			{
+	   <p>loading....</p>
+			}
+			else
+			{
+	   <div class="form-group">
+					@foreach (var extra in extras)
+					{
+			<div class="custom-control custom-checkbox">
+			 <input type="checkbox" class="custom-control-input" id="@extra.Id" @onchange="@((ChangeEventArgs e) => CheckboxClicked(@extra, e.Value))">
+			 <label class="custom-control-label" for="@extra.Id">@extra.Name - £@extra.GetFormattedPrice()</label>
+			</div>
+
+
+					}
+	   </div>
+
+			}
+  </form>
+  <div class="dialog-buttons">
+   <button class="btn btn-secondary mr-auto" @onclick="OnCancel">Cancel</button>
+   <span class="mr-center">
+	Price: <span class="price">@(Taco.GetFormattedTotalPrice())</span>
+   </span>
+   <button class="btn btn-success ml-auto" @onclick="OnConfirm">Order ></button>
+  </div>
+ </div>
+</div>
+
+
+
+@code {
+	[Parameter] public Taco Taco { get; set; }
+	[Parameter] public EventCallback OnCancel { get; set; }
+	[Parameter] public EventCallback OnConfirm { get; set; }
+	List<Extra> extras;
+	List<Extra> selectedExtras { get; set; } = new();
+
+	protected override async Task OnInitializedAsync()
+	{
+		var client = HttpClientFactory.CreateClient("FoodService");
+		extras = await client.GetFromJsonAsync<List<Extra>>("extras");
+	}
+
+	void CheckboxClicked(Extra extra, object checkedValue)
+	{
+		if ((bool)checkedValue)
+		{
+
+			if (!selectedExtras.Contains(extra))
+			{
+				selectedExtras.Add(extra);
+				Taco.Extras.Add(new TacoExtra
+				{
+					TacoId = Taco.Id,
+					ToppingId = extra.Id,
+					Extra = extra
+				});
+			}
+
+		}
+		else
+		{
+			selectedExtras.Remove(extra);
+			var itemToRemove = Taco.Extras.Single(r => r.ToppingId == extra.Id);
+			Taco.Extras.Remove(itemToRemove);
+
+		}
+
+		StateHasChanged();
+	}
+}}

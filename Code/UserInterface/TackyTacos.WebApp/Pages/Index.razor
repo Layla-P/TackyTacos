@@ -1,0 +1,82 @@
+﻿@page "/"
+@using Models
+@using System.Net.Http
+@using TackyTacos.WebApp.DummyData
+@inject IHttpClientFactory HttpClientFactory
+
+@if (specials is null)
+{
+	<p>loading....</p>
+}
+else
+{
+	<div class="main">
+
+	 <div class="card-deck card-deck-special">
+			@foreach (var special in specials)
+			{
+		  <div class="card card-special" @onclick="@(() => ShowConfigureTacoDialog(special))">
+		   <img src="@special.ImageUrl" class="card-img-top special-image" alt="...">
+		   <div class="card-body">
+			<h5 class="card-title">@special.Name</h5>
+			<p class="card-text">@special.Description</p>
+			<span class="price">£@special.GetFormattedBasePrice()</span>
+						@*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+		   </div>
+		  </div>
+
+			}
+	 </div>
+	</div>
+
+	<ShoppingBasket Order="order" User="user"/>
+}
+
+@if (showingConfigureDialog)
+{
+	<ConfigureTacoDialog Taco="configuringTaco"
+					 OnCancel="CancelConfigureTacoDialog"
+					 OnConfirm="ConfirmConfigureTacoDialog" />
+}
+
+@code {
+	Order order = new();
+	List<TacoSpecial> specials;
+	Taco configuringTaco;
+	bool showingConfigureDialog;
+	DummyUser user  = new DummyUser();
+
+	protected override async Task OnInitializedAsync()
+	{
+		Console.WriteLine(user.Id);
+		var client = HttpClientFactory.CreateClient("FoodService");
+		specials = await client.GetFromJsonAsync<List<TacoSpecial>>("specials");
+	}
+
+	void ShowConfigureTacoDialog(TacoSpecial special)
+	{
+		configuringTaco = new Taco()
+		{
+			Special = special,
+			SpecialId = special.Id,
+			Extras = new List<TacoExtra>(),
+		};
+
+		showingConfigureDialog = true;
+	}
+
+	void CancelConfigureTacoDialog()
+	{
+		configuringTaco = null;
+		showingConfigureDialog = false;
+	}
+
+	void ConfirmConfigureTacoDialog()
+	{
+		order.Tacos.Add(configuringTaco);
+		configuringTaco = null;
+		showingConfigureDialog = false;
+	}
+
+	
+}

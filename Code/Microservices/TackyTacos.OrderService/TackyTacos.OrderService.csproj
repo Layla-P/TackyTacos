@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+	<TargetFramework>net6.0</TargetFramework>
+	<UserSecretsId>ffce190d-56db-4c41-98d8-6ac6da20b30e</UserSecretsId>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+	<PackageReference Include="Azure.Cosmos" Version="4.0.0-preview3" />
+	<PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+	<PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.1.0" />
+	<PackageReference Include="Steeltoe.Common.Hosting" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NuGetPackages\TackyTacos.Messaging\TackyTacos.Messaging.csproj" />
+  </ItemGroup>
+
+</Project>

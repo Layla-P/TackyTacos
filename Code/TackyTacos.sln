@@ -1,0 +1,102 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TackyTacos.FoodService", "TackyTacos.FoodService", "{67CA7EA2-1F1A-45CB-B2A7-0B1809BE01F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TackyTacos.OrderService", "TackyTacos.OrderService", "{19D94F7D-1CB7-48CB-A545-44B22F61B241}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DAF1217A-51D4-474A-B771-D9EA45800C74}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.IntegrationTests", "Tests\OrderService.IntegrationTests\OrderService.IntegrationTests.csproj", "{266450E7-85A7-4CBA-B4A4-E159D5FACE32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TackyTacos.PaymentService", "TackyTacos.PaymentService", "{29139162-7CA1-464C-A682-A2770F46069A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalApis", "ExternalApis", "{AE5072B1-8DD7-402A-8B31-1CE38CEF9EA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentGateway", "PaymentGateway", "{7D356E7B-AA08-44B3-9C49-30A632D15652}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway", "ExternalApis\PaymentGateway\PaymentGateway.csproj", "{07272A3C-A64A-485D-BF68-1384F4E94E5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TackyTacos.NotificationService", "TackyTacos.NotificationService", "{B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGetPackages", "NuGetPackages", "{E6021E21-4547-40B3-81EE-D8854C1D905A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.FoodService", "Microservices\TackyTacos.FoodService\TackyTacos.FoodService.csproj", "{BD14AA83-9E0C-4709-B2FD-5543D361609E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.NotificationService", "Microservices\TackyTacos.NotificationService\TackyTacos.NotificationService.csproj", "{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.OrderService", "Microservices\TackyTacos.OrderService\TackyTacos.OrderService.csproj", "{7DE98793-050E-4318-B2CB-25437D9C1FC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.PaymentService", "Microservices\TackyTacos.PaymentService\TackyTacos.PaymentService.csproj", "{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.Messaging", "NuGetPackages\TackyTacos.Messaging\TackyTacos.Messaging.csproj", "{719CB5E2-2BB9-4053-A438-D5DDEE54391A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.WebApp", "UserInterface\TackyTacos.WebApp\TackyTacos.WebApp.csproj", "{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{266450E7-85A7-4CBA-B4A4-E159D5FACE32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266450E7-85A7-4CBA-B4A4-E159D5FACE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266450E7-85A7-4CBA-B4A4-E159D5FACE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266450E7-85A7-4CBA-B4A4-E159D5FACE32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD14AA83-9E0C-4709-B2FD-5543D361609E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD14AA83-9E0C-4709-B2FD-5543D361609E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD14AA83-9E0C-4709-B2FD-5543D361609E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD14AA83-9E0C-4709-B2FD-5543D361609E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE98793-050E-4318-B2CB-25437D9C1FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE98793-050E-4318-B2CB-25437D9C1FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE98793-050E-4318-B2CB-25437D9C1FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE98793-050E-4318-B2CB-25437D9C1FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719CB5E2-2BB9-4053-A438-D5DDEE54391A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719CB5E2-2BB9-4053-A438-D5DDEE54391A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719CB5E2-2BB9-4053-A438-D5DDEE54391A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719CB5E2-2BB9-4053-A438-D5DDEE54391A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67CA7EA2-1F1A-45CB-B2A7-0B1809BE01F1} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{19D94F7D-1CB7-48CB-A545-44B22F61B241} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{266450E7-85A7-4CBA-B4A4-E159D5FACE32} = {DAF1217A-51D4-474A-B771-D9EA45800C74}
+		{29139162-7CA1-464C-A682-A2770F46069A} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{7D356E7B-AA08-44B3-9C49-30A632D15652} = {AE5072B1-8DD7-402A-8B31-1CE38CEF9EA0}
+		{07272A3C-A64A-485D-BF68-1384F4E94E5B} = {7D356E7B-AA08-44B3-9C49-30A632D15652}
+		{B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{BD14AA83-9E0C-4709-B2FD-5543D361609E} = {67CA7EA2-1F1A-45CB-B2A7-0B1809BE01F1}
+		{CDFD654C-D6DB-479E-88E8-0AAC3BEC264B} = {B4EAAA28-E4FB-49C7-B77A-50E1A50D29F8}
+		{7DE98793-050E-4318-B2CB-25437D9C1FC5} = {19D94F7D-1CB7-48CB-A545-44B22F61B241}
+		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5} = {29139162-7CA1-464C-A682-A2770F46069A}
+		{719CB5E2-2BB9-4053-A438-D5DDEE54391A} = {E6021E21-4547-40B3-81EE-D8854C1D905A}
+		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}
+	EndGlobalSection
+EndGlobal

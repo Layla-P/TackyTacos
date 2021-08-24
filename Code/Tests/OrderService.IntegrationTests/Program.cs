@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using TanzuTacos.OrderService.Data;
-using TanzuTacos.OrderService.Models;
+using TackyTacos.OrderService.Data;
+using TackyTacos.OrderService.Models;
 
 namespace OrderService.IntegrationTests
 {

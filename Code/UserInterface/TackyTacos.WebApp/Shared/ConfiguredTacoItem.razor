@@ -1,0 +1,20 @@
+﻿@using TackyTacos.WebApp.Models
+
+<div class="cart-item">
+    <a @onclick="OnRemoved" class="delete-item">x</a>
+    <div class="title">@Taco.Special.Name</div>
+    <ul>
+        @foreach (var extra in Taco.Extras)
+        {
+        <li>+ @extra.Extra.Name</li>
+        }
+    </ul>
+    <div class="item-price">
+        @Taco.GetFormattedTotalPrice()
+    </div>
+</div>
+
+@code {
+    [Parameter] public Taco Taco { get; set; }
+    [Parameter] public EventCallback OnRemoved { get; set; }
+}
