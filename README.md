@@ -1,4 +1,4 @@
-# Welcome to Tanzu Tacos Workshop
+# Welcome to Tacky Tacos Workshop
 
 Layla is currently building this application on [Twitch](https://twitch.tv/laylacodesit).
 
