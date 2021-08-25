@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.Messaging", "NuG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TackyTacos.WebApp", "UserInterface\TackyTacos.WebApp\TackyTacos.WebApp.csproj", "{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{3B214CB7-7A9D-442D-88BB-13D38E03EA77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TackyTacos.ApiGateway", "Microservices\ApiGateway\TackyTacos.ApiGateway\TackyTacos.ApiGateway.csproj", "{7482776A-C3BF-4893-BBCA-64BD51AC6D9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,10 @@ Global
 		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7482776A-C3BF-4893-BBCA-64BD51AC6D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7482776A-C3BF-4893-BBCA-64BD51AC6D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7482776A-C3BF-4893-BBCA-64BD51AC6D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7482776A-C3BF-4893-BBCA-64BD51AC6D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +103,8 @@ Global
 		{24A970B4-2AAA-44E3-A2F1-51860D0CB6C5} = {29139162-7CA1-464C-A682-A2770F46069A}
 		{719CB5E2-2BB9-4053-A438-D5DDEE54391A} = {E6021E21-4547-40B3-81EE-D8854C1D905A}
 		{6B07CC2F-6A67-4D24-B6CE-76269D48F3A5} = {FEE0ED40-1C9C-4E36-B1F5-ED920B03D37E}
+		{3B214CB7-7A9D-442D-88BB-13D38E03EA77} = {0326F1DD-1C4C-47F4-B008-F6E18FF4D2A2}
+		{7482776A-C3BF-4893-BBCA-64BD51AC6D9D} = {3B214CB7-7A9D-442D-88BB-13D38E03EA77}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FF1A691-9EA5-419D-BF45-60E7F3E6FD59}
