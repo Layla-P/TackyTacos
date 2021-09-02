@@ -16,6 +16,8 @@ namespace TackyTacos.ApiGateway
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDiscoveryClient();
+
+
 			services.AddSingleton<IForwarderHttpClientFactory, ServiceDiscoveryForwarderHttpClientFactory>();
 			var proxyBuilder = services.AddReverseProxy();
 			// Initialize the reverse proxy from the "ReverseProxy" section of configuration

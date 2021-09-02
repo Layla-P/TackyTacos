@@ -1,20 +1,24 @@
 ﻿
 using Steeltoe.Common.Discovery;
 using Steeltoe.Discovery;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
 using Yarp.ReverseProxy.Forwarder;
 
 namespace TackyTacos.ApiGateway;
 public class ServiceDiscoveryForwarderHttpClientFactory : IForwarderHttpClientFactory
-{
-	DiscoveryHttpClientHandler _handler;
+{ 
+	private IDiscoveryClient _discoveryClient;
+	public ServiceDiscoveryForwarderHttpClientFactory(IDiscoveryClient discoveryClient)
+	{
+		_discoveryClient = discoveryClient;
+	}
 
 	public HttpMessageInvoker CreateClient(ForwarderHttpClientContext context)
 	{
-		IDiscoveryClient discoveryClient = new DiscoveryClient(context);
+		var handler = new DiscoveryHttpClientHandler(_discoveryClient);
 
-		_handler = new DiscoveryHttpClientHandler(discoveryClient);
-
-		var client = new HttpMessageInvoker(_handler, false);
+		var client = new HttpMessageInvoker(handler, false);
 
 		return client;
 	}
