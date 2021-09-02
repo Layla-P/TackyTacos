@@ -1,3 +1,5 @@
+using TackyTacos.ApiGateway.Extensions;
+
 namespace TackyTacos.ApiGateway
 {
 	public class Startup
@@ -12,9 +14,10 @@ namespace TackyTacos.ApiGateway
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var proxyBuilder = services.AddReverseProxy();
-			// Initialize the reverse proxy from the "ReverseProxy" section of configuration
-			proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
+			//var proxyBuilder = services.AddReverseProxy();
+			//// Initialize the reverse proxy from the "ReverseProxy" section of configuration
+			//proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
+			services.AddProxyConfig();
 
 		}
 
