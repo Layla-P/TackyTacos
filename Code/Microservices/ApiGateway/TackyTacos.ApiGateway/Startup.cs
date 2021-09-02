@@ -1,3 +1,6 @@
+using Yarp.ReverseProxy.Forwarder;
+using Steeltoe.Discovery.Client;
+
 namespace TackyTacos.ApiGateway
 {
 	public class Startup
@@ -12,6 +15,8 @@ namespace TackyTacos.ApiGateway
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDiscoveryClient();
+			services.AddSingleton<IForwarderHttpClientFactory, ServiceDiscoveryForwarderHttpClientFactory>();
 			var proxyBuilder = services.AddReverseProxy();
 			// Initialize the reverse proxy from the "ReverseProxy" section of configuration
 			proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
@@ -19,7 +24,7 @@ namespace TackyTacos.ApiGateway
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
 			{
