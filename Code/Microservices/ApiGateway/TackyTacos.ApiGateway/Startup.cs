@@ -17,7 +17,7 @@ namespace TackyTacos.ApiGateway
 			//var proxyBuilder = services.AddReverseProxy();
 			//// Initialize the reverse proxy from the "ReverseProxy" section of configuration
 			//proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
-			services.AddProxyConfig();
+			
 
 		}
 

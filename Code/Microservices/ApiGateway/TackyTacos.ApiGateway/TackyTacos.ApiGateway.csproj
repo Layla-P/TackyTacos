@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Steeltoe.Common.Hosting" Version="3.1.1" />
+	<PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.1.0" />
     <PackageReference Include="Yarp.ReverseProxy" Version="1.0.0-preview.12.21328.2" />
   </ItemGroup>
 
