@@ -17,8 +17,8 @@ namespace TackyTacos.ApiGateway
 			//var proxyBuilder = services.AddReverseProxy();
 			//// Initialize the reverse proxy from the "ReverseProxy" section of configuration
 			//proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
-			
 
+			services.AddEurekaServiceDiscovery();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
