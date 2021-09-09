@@ -1,4 +1,4 @@
-using TackyTacos.ApiGateway.Extensions;
+using Steeltoe.Discovery.Client;
 
 namespace TackyTacos.ApiGateway
 {
@@ -14,11 +14,12 @@ namespace TackyTacos.ApiGateway
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDiscoveryClient(Configuration);
 			//var proxyBuilder = services.AddReverseProxy();
 			//// Initialize the reverse proxy from the "ReverseProxy" section of configuration
 			//proxyBuilder.LoadFromConfig(Configuration.GetSection("ReverseProxy"));
-
-			services.AddEurekaServiceDiscovery();
+			services.AddReverseProxy()
+				.LoadFromMemory();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
