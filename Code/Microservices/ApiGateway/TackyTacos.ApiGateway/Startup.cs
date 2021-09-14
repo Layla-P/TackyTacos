@@ -1,5 +1,7 @@
 using Steeltoe.Discovery.Client;
-
+//https://auth0.com/blog/using-m2m-authorization/
+//https://auth0.com/docs/get-started/create-apps/machine-to-machine-apps
+//https://auth0.com/docs/quickstart/backend/aspnet-core-webapi
 namespace TackyTacos.ApiGateway
 {
 	public class Startup
