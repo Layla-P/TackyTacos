@@ -1,8 +1,7 @@
-
-
 namespace TackyTacos.PaymentService
 {
-	public class Startup
+    using TackyTacos.Messaging;
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
