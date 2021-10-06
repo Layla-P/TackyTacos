@@ -1,6 +1,7 @@
 ﻿
 namespace TackyTacos.OrderService.Data
 {
+	using Azure.Cosmos;
 	public class OrdersRepository
 	{
 		private readonly CosmosDbContext _context;
