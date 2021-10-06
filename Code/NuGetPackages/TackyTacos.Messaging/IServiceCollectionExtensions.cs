@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using RabbitMQ.Client;
-using Microsoft.Extensions.Configuration;
+﻿
 
 namespace TackyTacos.Messaging
 {

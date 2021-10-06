@@ -1,8 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
-
-namespace TackyTacos.FoodService.Models
+﻿namespace TackyTacos.FoodService.Models
 {
 	public class Taco
 	{

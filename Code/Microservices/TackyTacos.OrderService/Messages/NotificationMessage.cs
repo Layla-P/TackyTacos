@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TackyTacos.OrderService.Messages
+﻿namespace TackyTacos.OrderService.Messages
 {
 	public class NotificationMessage
 	{

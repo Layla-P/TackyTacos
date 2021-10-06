@@ -50,6 +50,7 @@
 		try
 		{
 			Order.UserId = User.Id;
+			Console.WriteLine(Order.TotalPrice.ToString());
 			var client = HttpClientFactory.CreateClient("OrderService");
 			var orderString = JsonSerializer.Serialize(Order);
 			var content = new StringContent(orderString, Encoding.UTF8, MediaTypeNames.Application.Json );
@@ -59,6 +60,8 @@
 			//Check if user is loggedIn for now assume they are and use dummy userId
 
 			Console.WriteLine($"Order placed with user id:{User.Id} and order id:{Order.Id}!");
+			Order = new();
+			StateHasChanged();
 		}
 		catch(Exception ex)
 		{

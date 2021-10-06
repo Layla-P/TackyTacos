@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using System;
-
+﻿
 namespace TackyTacos.OrderService.Models
 {
 	public class Order

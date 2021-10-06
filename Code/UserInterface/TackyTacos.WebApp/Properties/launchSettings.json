@@ -16,7 +16,7 @@
 		"ASPNETCORE_ENVIRONMENT": "Development"
 	  }
 	},
-	"WebApplication1": {
+	"TackyTacos.WebApp": {
 	  "commandName": "Project",
 	  "dotnetRunMessages": "true",
 	  "launchBrowser": true,

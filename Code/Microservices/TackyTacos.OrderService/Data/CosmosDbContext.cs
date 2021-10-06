@@ -1,9 +1,4 @@
-﻿using Azure.Cosmos;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
-using TackyTacos.OrderService.Models;
-
+﻿
 namespace TackyTacos.OrderService.Data
 {
 	public class CosmosDbContext

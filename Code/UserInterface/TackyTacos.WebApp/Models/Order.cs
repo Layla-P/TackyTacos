@@ -20,13 +20,21 @@ namespace TackyTacos.WebApp.Models
 
 		public DateTime CreatedTime { get; set; } = DateTime.Now;
 
+		public decimal TotalPrice { get; set; }
+
 		//public Address DeliveryAddress { get; set; } = new Address();
 
 		//public LatLong DeliveryLocation { get; set; }
 
 		public List<Taco> Tacos { get; set; } = new();
 
-		public decimal GetTotalPrice() => Tacos.Sum(p => p.GetTotalPrice());
+		public decimal GetTotalPrice()
+		{
+
+			TotalPrice = Tacos.Sum(p => p.GetTotalPrice());
+			return TotalPrice;
+		}
+
 
 		public string GetFormattedTotalPrice() => GetTotalPrice().ToString("0.00");
 	}

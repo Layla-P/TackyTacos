@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace TackyTacos.OrderService.Messages
 {
 	public class OrderCheckoutMessage

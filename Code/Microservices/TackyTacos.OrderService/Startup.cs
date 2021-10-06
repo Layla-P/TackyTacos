@@ -1,15 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using TackyTacos.OrderService.Models;
-using TackyTacos.OrderService.Data;
-using TackyTacos.OrderService.Messaging;
-using TackyTacos.OrderService.Services;
-using TackyTacos.Messaging;
-using Steeltoe.Discovery.Client;
+
+
 
 namespace TackyTacos.OrderService
 {
@@ -25,8 +15,8 @@ namespace TackyTacos.OrderService
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDiscoveryClient(Configuration);
 
+			services.AddDiscoveryClient(Configuration);
 			services.Configure<DbSettings>(Configuration.GetSection("DbSettings"));
 
 			services.SetUpRabbitMQ(Configuration);
