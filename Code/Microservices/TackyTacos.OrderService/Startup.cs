@@ -1,12 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.OpenApi.Models;
-using TackyTacos.OrderService.Models;
-using TackyTacos.OrderService.Data;
-using TackyTacos.OrderService.Messaging;
-using TackyTacos.OrderService.Services;
-using TackyTacos.Messaging;
-using Steeltoe.Discovery.Client;
+
+
 
 namespace TackyTacos.OrderService
 {

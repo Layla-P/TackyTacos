@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using TackyTacos.NotificationService.Models;
+﻿
 
 namespace TackyTacos.NotificationService.Services
 {

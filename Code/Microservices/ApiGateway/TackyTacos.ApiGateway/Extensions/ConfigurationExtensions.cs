@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Primitives;
-using Steeltoe.Discovery;
-using Steeltoe.Discovery.Eureka;
+﻿
 //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio
 //https://stackoverflow.com/questions/64517214/timer-task-run-vs-while-loop-task-delay-in-asp-net-core-hosted-service
 namespace Yarp.ReverseProxy.Configuration
@@ -108,8 +106,9 @@ namespace Yarp.ReverseProxy.Configuration
 		{
 			_timer?.Dispose();
 		}
+	
 
-		private class InMemoryConfig : IProxyConfig
+        private class InMemoryConfig : IProxyConfig
 		{
 			private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 

@@ -1,12 +1,4 @@
-﻿using Azure;
-using Azure.Cosmos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using TackyTacos.OrderService.Models;
-
+﻿
 namespace TackyTacos.OrderService.Data
 {
 	public class OrdersRepository

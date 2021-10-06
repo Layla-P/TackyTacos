@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.Threading;
-using TackyTacos.PaymentService.Messaging;
-
+﻿
 namespace TackyTacos.PaymentService.Helpers
 {
 	public static class ApplicationBuilderExtensions
