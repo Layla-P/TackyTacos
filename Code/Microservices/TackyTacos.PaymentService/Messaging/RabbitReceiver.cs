@@ -2,6 +2,10 @@
 
 namespace TackyTacos.PaymentService.Messaging
 {
+	using RabbitMQ.Client;
+	using RabbitMQ.Client.Events;
+	using TackyTacos.Messaging;
+
 	public class RabbitReceiver : IHostedService
 	{
 		private readonly RabbitMQSettings _rabbitSettings;

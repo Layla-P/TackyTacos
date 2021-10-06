@@ -2,6 +2,9 @@
 
 namespace TackyTacos.OrderService.Messaging
 {
+	using RabbitMQ.Client;
+	using TackyTacos.Messaging;
+
 	public class RabbitSender
 	{
 		private readonly IModel _channel;

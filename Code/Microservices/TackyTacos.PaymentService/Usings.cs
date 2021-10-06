@@ -9,8 +9,5 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
 global using Microsoft.OpenApi.Models;
 global using Microsoft.Extensions.Options;
-global using RabbitMQ.Client;
-global using RabbitMQ.Client.Events;
-global using TackyTacos.Messaging;
 global using TackyTacos.PaymentService.Helpers;
 global using TackyTacos.PaymentService.Messaging;
