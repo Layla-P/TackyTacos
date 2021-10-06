@@ -1,8 +1,9 @@
-
-
+global using TackyTacos.Messaging;
 
 namespace TackyTacos.OrderService
 {
+	using Steeltoe.Discovery.Client;
+
 	public class Startup
 	{
 		public Startup(IConfiguration configuration)

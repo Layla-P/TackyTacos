@@ -1,6 +1,7 @@
 
 namespace TackyTacos.FoodService
 {
+    using Steeltoe.Discovery.Client;
     public class Startup
     {
         public Startup(IConfiguration configuration)
